@@ -14,6 +14,7 @@ from time import sleep
 
 
 stock_base_url = 'https://www.stock.com.py/default.aspx'
+stock_cats = {}
 
 
 headers = {
@@ -72,11 +73,11 @@ def stock_main():
     menu = soup.find_all('div', attrs={"class": "wsmenu-submenu"})
     for i in menu[0].find_all('a'):
         if has_href_attribute(i):
-            print(i)
-            print('='*33)
+            stock_cats[i.text] = i['href']
 
 
 
 if __name__ == "__main__":
     stock_main()
+    print(stock_cats)
 
