@@ -8,13 +8,17 @@ from bs4 import BeautifulSoup
 import datetime
 import time
 import ast
-from random import randint,choice
+from random import randint, choice, uniform
 from time import sleep
+
 # Importing helpers.
-from stock_engine import process_page
+from stock_engine import run_stock
+
+import os
+from pathlib import Path
 
 
-
+BASE_DIR = Path(__file__).resolve().parent.parent
 stock_base_url = "https://www.stock.com.py/default.aspx"
 stock_cats = {}
 
@@ -67,5 +71,10 @@ def stock_main():
 
 if __name__ == "__main__":
     stock_main()
-    cat = choice(list(stock_cats.items()))
-    process_page(cat)
+    for i in range(0, 10):
+        random_delay = int(uniform(1, 5))
+        print(f"RUNNING THE {i} ROUND.")
+        print(f"Waiting {random_delay} seconds to continue.")
+        time.sleep(random_delay)
+        cat = choice(list(stock_cats.items()))
+        run_stock(cat)
