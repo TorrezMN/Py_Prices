@@ -8,12 +8,14 @@ from bs4 import BeautifulSoup
 import datetime
 import time
 import ast
-from random import randint
+from random import randint,choice
 from time import sleep
+# Importing helpers.
+from stock_engine import process_page
 
 
 
-stock_base_url = 'https://www.stock.com.py/default.aspx'
+stock_base_url = "https://www.stock.com.py/default.aspx"
 stock_cats = {}
 
 
@@ -42,21 +44,6 @@ def get_current_time():
     return f"{now.hour:02d}:{now.minute:02d}:{now.second:02d}"
 
 
-
-
-def has_href_attribute(anchor_tag):
-  """Checks if the given anchor tag (a bs4.element.Tag object) contains the 'href' attribute.
-
-  Args:
-    anchor_tag: The bs4.element.Tag object representing the anchor tag to check.
-
-  Returns:
-    True if the anchor tag has an 'href' attribute, False otherwise.
-  """
-
-  return anchor_tag.has_attr('href')
-
-
 def pprint_data(d):
     """Prints nicely a dict."""
     data = json.dumps(d, indent=4, ensure_ascii=False)
@@ -68,16 +55,17 @@ def get_data():
     response = requests.get(stock_base_url, headers=headers)
     return response.content
 
+
 def stock_main():
     soup = BeautifulSoup(get_data(), "html.parser")
-    menu = soup.find_all('div', attrs={"class": "wsmenu-submenu"})
-    for i in menu[0].find_all('a'):
-        if has_href_attribute(i):
-            stock_cats[i.text] = i['href']
-
+    menu = soup.find_all("div", attrs={"class": "wsmenu-submenu"})
+    # Sets the 'categories' to start the script.
+    for i in menu[0].find_all("a"):
+        if i.has_attr("href"):
+            stock_cats[i.text] = i["href"]
 
 
 if __name__ == "__main__":
     stock_main()
-    print(stock_cats)
-
+    cat = choice(list(stock_cats.items()))
+    process_page(cat)
