@@ -31,7 +31,7 @@ def get_current_month_and_year():
 
 
 def build_and_create_file_route(cat):
-    route = os.path.join(BASE_DIR, "data", "stock", str(cat))
+    route = os.path.join(BASE_DIR, "data", "stock",get_current_month_and_year())
     Path(route).mkdir(parents=True, exist_ok=True)
     return Path(route)
 
@@ -66,9 +66,9 @@ def append_dict_to_csv(file_path, data_dict):
         None
     """
 
-    keys = ["prod_name", "prod_price", "product_picture", "run_date"]
+    keys = ["category","prod_name", "prod_price", "product_picture", "run_date"]
     with open(
-        Path(file_path, f"{get_current_month_and_year()}.csv"), "w+", newline=""
+        Path(file_path, f"stock_data.csv"), "w+", newline=""
     ) as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=keys)
 
@@ -85,12 +85,19 @@ def process_box(b, c):
     product_price = b.find("span", class_="productPrice").text
     product_picture = b.find("a", class_="picture-link").img["src"]
     run_date = get_current_date()
+    data['category']=c
     data["prod_name"] = product_title
     data["prod_price"] = product_price
     data["product_picture"] = product_picture
     data["run_date"] = run_date
     # # Append to file.
     append_dict_to_csv(build_and_create_file_route(c), data)
+    print('='*44)
+    print('='*44)
+    print(c)
+    print('='*44)
+    print(data)
+    print('='*44)
 
 
 def stock_main(c):
@@ -111,3 +118,8 @@ def stock_main(c):
 
 def run_stock(cat):
     stock_main(cat)
+
+
+
+if __name__ == "__main__":
+    print(get_current_month_and_year())
