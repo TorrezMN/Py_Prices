@@ -19,6 +19,7 @@ from pathlib import Path
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+#super6_base_url = "https://www.superseis.com.py/default.aspx"
 super6_base_url = "https://www.superseis.com.py/default.aspx"
 super6_cats = {}
 
@@ -64,10 +65,19 @@ def super6_main():
     soup = BeautifulSoup(get_data(), "html.parser")
     menu = soup.find("div", attrs={"class": "wsmenu-submenu"})
     menu_items = menu.find_all('a')
+    item_products = soup.find_all('div', attrs={'class':'item-box'})
     for i in menu_items:
         if i.has_attr('href'):
-            print(i)
+            super6_cats[i.text] = i['href']
 
+    
 
 if __name__ == "__main__":
     super6_main()
+    for i in range(0, 10):
+        random_delay = int(uniform(1, 15))
+        print(f"RUNNING THE {i} ROUND.")
+        print(f"Waiting {random_delay} seconds to continue.")
+        time.sleep(random_delay)
+        cat = choice(list(super6_cats.items()))
+        print(cat)
