@@ -12,7 +12,7 @@ from random import randint, choice, uniform
 from time import sleep
 
 # Importing helpers.
-#from super6_engine import run_super6
+from super6_engine import run_super6
 
 import os
 from pathlib import Path
@@ -80,4 +80,4 @@ if __name__ == "__main__":
         print(f"Waiting {random_delay} seconds to continue.")
         time.sleep(random_delay)
         cat = choice(list(super6_cats.items()))
-        print(cat)
+        run_super6(cat)
