@@ -70,7 +70,7 @@ def append_dict_to_csv(file_path, data_dict):
         writer = csv.DictWriter(csvfile, fieldnames=keys)
 
         # Write header row only if the file is empty
-        if os.path.getsize(Path(file_path,f'super6_data.csv')) == 0:
+        if os.path.getsize(Path(file_path,f"super6_data.csv")) == 0:
             writer.writeheader()
 
         writer.writerow(data_dict)
@@ -79,10 +79,10 @@ def append_dict_to_csv(file_path, data_dict):
 def process_box(b, c):
     data = {}
     product_title = b.find("a", class_="product-title-link").text
-    product_price = 'GS. ' + b.find("span", class_="price-label").text
+    product_price = "GS." + b.find("span", class_="price-label").text
     product_picture = b.find("a", class_="picture-link").img["src"]
     run_date = get_current_date()
-    data['category']=c
+    data["category"]=c
     data["prod_name"] = product_title
     data["prod_price"] = product_price
     data["product_picture"] = product_picture
@@ -90,12 +90,12 @@ def process_box(b, c):
 
     # # Append to file.
     append_dict_to_csv(build_and_create_file_route(c), data)
-    print('='*44)
-    print('='*44)
+    print("="*44)
+    print("="*44)
     print(c)
-    print('='*44)
+    print("="*44)
     print(data)
-    print('='*44)
+    print("="*44)
 
 
 def super6_main(c):
