@@ -74,8 +74,8 @@ def super6_main():
 
 if __name__ == "__main__":
     super6_main()
-    for i in range(0, 10):
-        random_delay = int(uniform(1, 15))
+    for i in range(0, 20):
+        random_delay = int(uniform(1, 50))
         print(f"RUNNING THE {i} ROUND.")
         print(f"Waiting {random_delay} seconds to continue.")
         time.sleep(random_delay)
