@@ -68,7 +68,7 @@ def append_dict_to_csv(file_path, data_dict):
 
     keys = ["category","prod_name", "prod_price", "product_picture", "run_date"]
     with open(
-        Path(file_path, f"stock_data.csv"), "a+", newline=""
+        Path(file_path, f"stock_data_{get_current_month_and_year()}.csv"), "a+", newline=""
     ) as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=keys)
 
