@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author: Torrez, Milton N.
 
+import sys
 import json
 import requests
 from bs4 import BeautifulSoup
@@ -71,7 +72,7 @@ def stock_main():
 
 if __name__ == "__main__":
     stock_main()
-    for i in range(0, 20):
+    for i in range(0, int(sys.argv[1])):
         random_delay = int(uniform(1, 60))
         print(f"RUNNING THE {i} ROUND.")
         print(f"Waiting {random_delay} seconds to continue.")

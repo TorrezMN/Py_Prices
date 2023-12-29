@@ -3,6 +3,7 @@
 # Author: Torrez, Milton N.
 
 import json
+import sys
 import requests
 from bs4 import BeautifulSoup
 import datetime
@@ -74,7 +75,7 @@ def super6_main():
 
 if __name__ == "__main__":
     super6_main()
-    for i in range(0, 20):
+    for i in range(0, int(sys.argv[1])):
         random_delay = int(uniform(1, 50))
         print(f"RUNNING THE {i} ROUND.")
         print(f"Waiting {random_delay} seconds to continue.")
