@@ -70,7 +70,7 @@ def append_dict_to_csv(file_path, data_dict):
         writer = csv.DictWriter(csvfile, fieldnames=keys)
 
         # Write header row only if the file is empty
-        if os.path.getsize(Path(file_path,f"super6_data.csv")) == 0:
+        if os.path.getsize(Path(file_path,f"super6_data_{get_current_month_and_year()}.csv")) == 0:
             writer.writeheader()
 
         writer.writerow(data_dict)
