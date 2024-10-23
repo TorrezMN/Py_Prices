@@ -37,3 +37,16 @@ while [ $i -le $TOTAL_RUNS ]; do
     i=$((i + 1))
 done
 
+
+
+
+
+
+# Get current date and time
+current_date=$(date '+%Y-%m-%d')
+current_time=$(date '+%H:%M:%S')
+
+# Append the log message to push_log.txt
+echo "$current_date  $current_time | SE EJECUTO CORRECTAMENTE!" >> /home/torrezmn/Documentos/Py_Prices/run_log.txt 
+
+
