@@ -1,0 +1,40 @@
+{
+  "id": "torrezmn/prices-py",
+  "title": "Precios en Paraguay: Supermercados de Alimentos",
+  "subtitle": "Dataset de precios históricos de productos en supermercados paraguayos",
+  "licenses": [
+    {
+      "name": "CC0-1.0",
+      "url": "https://creativecommons.org/publicdomain/zero/1.0/"
+    }
+  ],
+  "language": "es",
+  "description": "Este conjunto de datos proporciona una colección histórica de precios de productos en supermercados de alimentos en Paraguay. Los datos incluyen precios de productos básicos, promociones, y categorías diversas recopiladas de cadenas populares como Stock y Super 6. Este recurso es ideal para análisis de precios, estudios de mercado, y desarrollo de aplicaciones de comparación de precios.",
+  "keywords": [
+    "precios",
+    "supermercados",
+    "Paraguay",
+    "análisis de mercado",
+    "datos históricos",
+    "economía",
+    "productos alimenticios"
+  ],
+  "data_sources": [
+    {
+      "name": "Stock",
+      "url": "https://www.stock.com.py/default.aspx"
+    },
+    {
+      "name": "Super 6",
+      "url": "https://www.superseis.com.py/default.aspx"
+    }
+  ],
+  "dataset_size": "Aproximadamente 20MB",
+  "update_frequency": "Semanal",
+  "owner": {
+    "name": "TorrezMN",
+    "contact": "torrezmn@gmail.com",
+    "url": "https://kaggle.com/torrezmn"
+  }
+}
+
